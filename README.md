@@ -18,7 +18,7 @@
 
 * ##### &#x20;**Architecture**
 
-![Architecture Diagram](Architecture.png)
+![Architecture Diagram](architecture.png)
 
 
 
