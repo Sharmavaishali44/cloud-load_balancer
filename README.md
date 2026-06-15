@@ -1,160 +1,161 @@
-#### &#x20; ***AWS Auto Scaling and Load Balancer Project***
+#### &#x20;    **AWS Auto Scaling with Application Load Balancer (ALB)**
 
 
 
-* ##### ***Project Overview-***
+* ##### **Project Overview**
 
 
 
-***This project demonstrates how to manage and maintain web server traffic using an AWS Application Load Balancer (ALB) and Auto Scaling Group (ASG).***
+**This project demonstrates how to manage and maintain web server traffic using an AWS Application Load Balancer (ALB) and Auto Scaling Group (ASG).**
 
 
 
-***The Auto Scaling Group automatically launches additional EC2 instances when CPU utilization increases and terminates them when the load decreases. The Load Balancer distributes incoming traffic across healthy instances.***
+**The Auto Scaling Group automatically launches additional EC2 instances when CPU utilization increases and terminates them when the load decreases. The Load Balancer distributes incoming traffic across healthy instances.**
 
 
 
 
 
-* ##### &#x20;***Architecture-***
+* ##### &#x20;**Architecture**
 
-***(architecture.png)***
+**!\[Architecture Diagram](Archetecture.png)**
 
 
 
 
 
-* ##### &#x20;***AWS Services Used***
+* ##### &#x20;**AWS Services Used**
 
 
 
-***\* Amazon EC2***
+1. &#x20;**Amazon EC2**
+2. &#x20;**Launch Template**
+3. &#x20;**Auto Scaling Group (ASG)**
+4. &#x20;**Application Load Balancer (ALB)**
+5. &#x20;**Target Group**
+6. &#x20;**Amazon CloudWatch**
 
-***\* Launch Template***
+**7.  Security Group**
 
-***\* Auto Scaling Group (ASG)***
 
-***\* Application Load Balancer (ALB)***
 
-***\* Target Group***
 
-***\* Amazon CloudWatch***
 
 
 
+* ##### &#x20;**Project Workflow**
 
 
 
+1. **Created a Launch Template with the required EC2 configuration.**
+2. **Configured an Auto Scaling Group using the Launch Template.**
+3. **Defined Minimum, Desired, and Maximum Capacity.**
+4. **Created an Application Load Balancer.**
+5. **Configured a Target Group and attached it to the Load Balancer.**
+6. **Linked the Auto Scaling Group with the Target Group.**
+7. **Monitored CPU utilization using CloudWatch.**
+8. **Generated CPU load on running instances.**
+9. **Verified automatic scaling based on CPU utilization.**
 
-* ##### &#x20;***Project Workflow***
 
 
 
-***1. Created a Launch Template.***
 
-***2. Created an Auto Scaling Group.***
+* ##### **Screenshots**
 
-***3. Configured Minimum, Desired and Maximum Capacity.***
 
-***4. Created an Application Load Balancer.***
 
-***5. Attached Target Group to Auto Scaling Group.***
+1. &#x20;**Launch Template**
 
-***6. Monitored CPU Utilization using CloudWatch.***
 
-***7. Generated CPU load on EC2 instances.***
 
-***8. Verified automatic instance scaling.***
+**This launch template was used to define the EC2 instance configuration, including AMI, instance type, security group, and user data script.**
 
-##### 
 
-* ##### ***Screenshots***
 
+**2. Auto Scaling Group**
 
 
-1. &#x20;***Launch Template***
 
+**The Auto Scaling Group was configured with minimum, desired, and maximum capacity to automatically manage EC2 instances based on workload.**
 
 
-***This launch template was used to define the EC2 instance configuration, including AMI, instance type, security group, and user data script.***
 
+**3. Load Balancer**
 
 
-***2. Auto Scaling Group***
 
+**The Application Load Balancer distributes incoming traffic across healthy EC2 instances to improve availability and reliability.**
 
 
-***The Auto Scaling Group was configured with minimum, desired, and maximum capacity to automatically manage EC2 instances based on workload.***
 
+**4. Target Group**
 
 
-***3. Load Balancer***
 
+**The target group contains the EC2 instances registered behind the load balancer and performs health checks on them.**
 
 
-***The Application Load Balancer distributes incoming traffic across healthy EC2 instances to improve availability and reliability.***
 
 
 
-***4. Target Group***
 
 
+**5.  CPU Utilization**
 
-***The target group contains the EC2 instances registered behind the load balancer and performs health checks on them.***
 
 
+**CPU load was generated on the EC2 instance to test the auto scaling functionality and trigger scaling actions.**
 
 
 
 
 
-***5.  CPU Utilization***
 
 
+**6. Auto Scaled Instance**
 
-***CPU load was generated on the EC2 instance to test the auto scaling functionality and trigger scaling actions.***
 
 
+**A new EC2 instance was automatically launched when CPU utilization exceeded the configured threshold.**
 
 
 
 
 
-***6. Auto Scaled Instance***
+* ##### &#x20;**User Data Script**
 
 
 
-***A new EC2 instance was automatically launched when CPU utilization exceeded the configured threshold.***
+**The user-data file is a script which was used to automatically install and configure the Apache web server during instance launch.**
 
 
 
+* ##### **Testing Commands**
 
 
-* ##### &#x20;***User Data Script***
 
+**bash**
 
+**systemctl status httpd (# if it shows in active then systemctl start httpd).**
 
-***The user-data file is a script which was used to automatically install and configure the Apache web server during instance launch.***
+**top**
 
+**sha1sum /dev/zero**
 
 
-* ##### ***Testing Commands***
 
+* ##### **Results**
+1. **Successfully distributed traffic using Application Load Balancer.**
+2. **Automatically launched new EC2 instances when CPU utilization increased.**
+3. **Improved application availability and fault tolerance.**
+4. **Demonstrated dynamic infrastructure scaling using AWS Auto Scaling.**
 
 
-***bash***
 
-***systemctl status httpd (# if it shows in active then systemctl start httpd).***
+* ##### **Repository**
 
-***top***
 
-***sha1sum /dev/zero***
 
-
-
-* ##### ***Result***
-
-
-
-***The Application Load Balancer successfully distributed traffic across EC2 instances, and the Auto Scaling Group automatically launched additional instances when CPU utilization crossed the configured threshold.***
+**This project demonstrates practical implementation of AWS scaling and load balancing concepts used in production cloud environments.**
 
